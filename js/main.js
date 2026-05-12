@@ -49,7 +49,7 @@ function showCategory() {
 
 // загрузка товаров на продукции
 function loadProductsFromXML() {
-  var xmlUrl = 'data/company.xml';
+  var xmlUrl = '/kurs-/data/company.xml';
   
   fetch(xmlUrl)
     .then(function(response) {
@@ -117,7 +117,7 @@ function loadProductsFromXML() {
 
 // популярные товары на главной
 function loadHomeProducts() {
-  var xmlUrl = 'data/company.xml';
+  var xmlUrl = '/kurs-/data/company.xml';
   
   fetch(xmlUrl)
     .then(function(response) {
