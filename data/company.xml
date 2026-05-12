@@ -6,7 +6,51 @@
   <founded>2010</founded>
   <employees>120</employees>
   <products>
-    <product>
+    <product><?xml version="1.0" encoding="UTF-8"?>
+<products>
+  <item category="metal">
+    <name>Опорные фермы</name>
+    <description>Несущие конструкции для производственных и складских объектов.</description>
+    <price>от 5 800 BYN</price>
+    <icon>⚙</icon>
+    <image>images/1.jpg</image>
+  </item>
+  <item category="metal">
+    <name>Площадки обслуживания</name>
+    <description>Переходы, лестничные блоки и сервисные металлоконструкции.</description>
+    <price>от 3 600 BYN</price>
+    <icon>⚙</icon>
+    <image>images/2.jpg</image>
+  </item>
+  <item category="machining">
+    <name>Токарные детали</name>
+    <description>Втулки, оси и крепежные элементы по рабочим чертежам.</description>
+    <price>от 950 BYN</price>
+    <icon>⚙</icon>
+    <image>images/3.jpg</image>
+  </item>
+  <item category="machining">
+    <name>Фрезерованные узлы</name>
+    <description>Обработка корпусов и монтажных деталей для оборудования.</description>
+    <price>от 1 400 BYN</price>
+    <icon>⚙</icon>
+    <image>images/4.jpg</image>
+  </item>
+  <item category="welding">
+    <name>Сварные рамы</name>
+    <description>Рамные элементы для технологических линий и станков.</description>
+    <price>от 4 100 BYN</price>
+    <icon>⚙</icon>
+    <image>images/5.jpg</image>
+  </item>
+  <item category="welding">
+    <name>Монтажные узлы</name>
+    <description>Сборные сварные конструкции для промышленного монтажа.</description>
+    <price>от 2 700 BYN</price>
+    <icon>⚙</icon>
+    <image>images/6.jpg</image>
+  </item>
+</products>
       <titul>Опорные фермы</titul>
       <category>Металлоконструкции</category>
       <price>5800</price>
