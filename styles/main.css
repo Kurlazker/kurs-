@@ -528,3 +528,138 @@ a {
     margin-bottom: 5px;
   }
 }
+@media (max-width: 600px) {
+  // ШАПКА 
+  .site-header {
+    padding: 12px 0 !important;
+
+    .container {
+      padding: 0 20px !important;
+    }
+  }
+
+  .header-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px !important;
+    min-height: 70px !important;
+  }
+
+  // ЛОГОТИП — слева
+  .logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex: 0 1 auto !important;
+    max-width: 70% !important;
+  }
+
+  .logo-mark {
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 28px !important;
+    line-height: 52px !important;
+  }
+
+  .logo-text {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  // БУРГЕР — строго справа, на одном уровне
+  .menu-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 32px !important;
+    background: none !important;
+    border: 1px solid #d6dbe0 !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    order: 2 !important;
+  }
+
+  // выпадающее меню
+  .site-nav {
+    display: none !important;
+    position: absolute !important;
+    top: 85px !important;
+    left: 20px !important;
+    right: 20px !important;
+    flex-direction: column !important;
+    background: #ffffff !important;
+    border: 1px solid #d6dbe0 !important;
+    border-radius: 20px !important;
+    padding: 20px 18px !important;
+    gap: 15px !important;
+    z-index: 100 !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+
+    &.is-open {
+      display: flex !important;
+    }
+
+    a {
+      padding: 12px 0 !important;
+      font-size: 18px !important;
+      font-weight: 500 !important;
+      text-align: center !important;
+      border-bottom: 1px solid #eee !important;
+
+      &:last-child {
+        border-bottom: none !important;
+      }
+    }
+  }
+
+  .hero-grid,
+  .feature-grid,
+  .two-col,
+  .cards-3,
+  .cards-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero,
+  .page-hero {
+    padding: 40px 0 !important;
+  }
+
+  .hero-actions .btn,
+  .catalog-toolbar .btn,
+  .catalog-toolbar select,
+  .footer-socials a {
+    width: 100% !important;
+  }
+
+  .badge-card {
+    position: static !important;
+    margin-top: 18px !important;
+    max-width: none !important;
+  }
+
+  .catalog-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+
+    select,
+    .btn {
+      width: 100% !important;
+      min-width: auto !important;
+    }
+  }
+
+  .card,
+  .cta-box {
+    padding: 20px !important;
+  }
+}
