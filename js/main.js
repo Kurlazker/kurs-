@@ -1,4 +1,4 @@
-// ========== БУРГЕР-МЕНЮ ==========
+// бургер меню
 function initMenu() {
   var button = document.getElementById('menuToggle');
   var menu = document.getElementById('siteNav');
@@ -14,7 +14,7 @@ function initMenu() {
   }
 }
 
-// ========== ФИЛЬТРАЦИЯ ТОВАРОВ ==========
+// фильтр товаров
 function initProducts() {
   var buttonProducts = document.getElementById('showProducts');
   if (buttonProducts) {
@@ -47,7 +47,7 @@ function showCategory() {
   }
 }
 
-// ========== ЗАГРУЗКА ТОВАРОВ ДЛЯ СТРАНИЦЫ ПРОДУКЦИЯ ==========
+// загрузка товаров на продукции
 function loadProductsFromXML() {
   var xmlUrl = 'data/company.xml';
   
@@ -115,7 +115,7 @@ function loadProductsFromXML() {
     });
 }
 
-// ========== ЗАГРУЗКА ПОПУЛЯРНЫХ ТОВАРОВ НА ГЛАВНУЮ ==========
+// популярные товары на главной
 function loadHomeProducts() {
   var xmlUrl = 'data/company.xml';
   
@@ -183,7 +183,7 @@ function loadHomeProducts() {
     });
 }
 
-// ========== ФОРМА ==========
+// форма
 function initForm() {
   var form = document.getElementById('contactForm');
   if (form) {
@@ -198,7 +198,7 @@ function sendMessage(event) {
   result.innerHTML = 'Спасибо, ' + name.value + '. Ваша заявка принята.';
 }
 
-// ========== ЗАПУСК ==========
+// Запуск
 window.onload = function () {
   initMenu();
   initForm();
