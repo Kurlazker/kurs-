@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="company.xsl"?>
-<company>
-  <name>СтальПром</name>
-  <city>Минск</city>
-  <founded>2010</founded>
-  <employees>120</employees>
-  <products>
-    <product><?xml version="1.0" encoding="UTF-8"?>
 <products>
   <item category="metal">
     <name>Опорные фермы</name>
@@ -51,29 +43,3 @@
     <image>images/6.jpg</image>
   </item>
 </products>
-      <titul>Опорные фермы</titul>
-      <category>Металлоконструкции</category>
-      <price>5800</price>
-    </product>
-    <product>
-      <titul>Площадки обслуживания</titul>
-      <category>Металлоконструкции</category>
-      <price>3600</price>
-    </product>
-    <product>
-      <titul>Токарные детали</titul>
-      <category>Обработка</category>
-      <price>950</price>
-    </product>
-    <product>
-      <titul>Фрезерованные узлы</titul>
-      <category>Обработка</category>
-      <price>1400</price>
-    </product>
-    <product>
-      <titul>Сварные рамы</titul>
-      <category>Сварка</category>
-      <price>4100</price>
-    </product>
-  </products>
-</company>
