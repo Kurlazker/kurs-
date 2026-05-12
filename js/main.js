@@ -50,22 +50,36 @@ function showCategory() {
 // загрузка товаров на продукции
 function loadProductsFromXML() {
   var xmlUrl = '/kurs-/data/company.xml';
+  console.log('1. Пытаюсь загрузить XML по адресу:', xmlUrl);
   
   fetch(xmlUrl)
     .then(function(response) {
+      console.log('2. Статус ответа:', response.status);
       if (!response.ok) {
-        throw new Error('Ошибка загрузки: ' + response.status);
+        throw new Error('HTTP ошибка: ' + response.status);
       }
       return response.text();
     })
     .then(function(xmlString) {
+      console.log('3. XML загружен, первые 100 символов:', xmlString.substring(0, 100));
+      
       var parser = new DOMParser();
       var xmlDoc = parser.parseFromString(xmlString, 'text/xml');
       
+      var parserError = xmlDoc.querySelector('parsererror');
+      if (parserError) {
+        console.error('4. Ошибка парсинга XML:', parserError.textContent);
+        throw new Error('Ошибка парсинга XML');
+      }
+      
       var items = xmlDoc.getElementsByTagName('item');
+      console.log('5. Найдено товаров в XML:', items.length);
       
       var container = document.getElementById('catalog-list');
-      if (!container) return;
+      if (!container) {
+        console.error('6. Контейнер catalog-list не найден!');
+        return;
+      }
       
       container.innerHTML = '';
       
@@ -80,6 +94,7 @@ function loadProductsFromXML() {
         var image = '';
         if (imageTag.length > 0 && imageTag[0].textContent) {
           image = imageTag[0].textContent;
+          console.log('   Товар ' + i + ' фото: ' + image);
         }
         
         var card = document.createElement('article');
@@ -102,15 +117,17 @@ function loadProductsFromXML() {
         `;
         
         container.appendChild(card);
+        console.log('   Товар ' + i + ' "' + name + '" добавлен в контейнер');
       }
       
+      console.log('7. Всего создано карточек:', container.children.length);
       initProducts();
     })
     .catch(function(error) {
-      console.error('Ошибка:', error);
+      console.error('ОШИБКА:', error.message);
       var container = document.getElementById('catalog-list');
       if (container) {
-        container.innerHTML = '<p style="color: red; text-align: center;">Ошибка загрузки данных</p>';
+        container.innerHTML = '<p style="color: red; text-align: center;">Ошибка загрузки: ' + error.message + '</p>';
       }
     });
 }
@@ -118,11 +135,12 @@ function loadProductsFromXML() {
 // популярные товары на главной
 function loadHomeProducts() {
   var xmlUrl = '/kurs-/data/company.xml';
+  console.log('Главная: загружаю XML по адресу:', xmlUrl);
   
   fetch(xmlUrl)
     .then(function(response) {
       if (!response.ok) {
-        throw new Error('Ошибка загрузки: ' + response.status);
+        throw new Error('HTTP ошибка: ' + response.status);
       }
       return response.text();
     })
@@ -173,12 +191,13 @@ function loadHomeProducts() {
         
         container.appendChild(card);
       }
+      console.log('Главная: добавлено товаров:', container.children.length);
     })
     .catch(function(error) {
-      console.error('Ошибка загрузки товаров на главную:', error);
+      console.error('Главная ошибка:', error.message);
       var container = document.getElementById('home-products');
       if (container) {
-        container.innerHTML = '<p style="color: red; text-align: center;">Не удалось загрузить товары</p>';
+        container.innerHTML = '<p style="color: red; text-align: center;">Не удалось загрузить товары: ' + error.message + '</p>';
       }
     });
 }
@@ -200,14 +219,17 @@ function sendMessage(event) {
 
 // Запуск
 window.onload = function () {
+  console.log('Страница загружена, запускаем функции...');
   initMenu();
   initForm();
   
   if (document.getElementById('catalog-list')) {
+    console.log('Найдена страница продукции, загружаем товары...');
     loadProductsFromXML();
   }
   
   if (document.getElementById('home-products')) {
+    console.log('Найдена главная страница, загружаем популярные товары...');
     loadHomeProducts();
   }
 };
