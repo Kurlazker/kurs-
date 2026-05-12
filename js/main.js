@@ -1,9 +1,4 @@
-window.onload = function () {
-  initMenu();
-  initProducts();
-  initForm();
-};
-
+// ========== БУРГЕР-МЕНЮ ==========
 function initMenu() {
   var button = document.getElementById('menuToggle');
   var menu = document.getElementById('siteNav');
@@ -19,54 +14,178 @@ function initMenu() {
   }
 }
 
+// ========== ФИЛЬТРАЦИЯ ТОВАРОВ ==========
 function initProducts() {
   var buttonProducts = document.getElementById('showProducts');
-
   if (buttonProducts) {
-    buttonProducts.addEventListener('click', showCategory);
+    var newButton = buttonProducts.cloneNode(true);
+    buttonProducts.parentNode.replaceChild(newButton, buttonProducts);
+    newButton.addEventListener('click', showCategory);
   }
 }
 
 function showCategory() {
   var select = document.getElementById('filterSelect');
-  var cards = document.querySelectorAll('.product');
-  var i;
-
-  for (i = 0; i < cards.length; i = i + 1) {
-    cards[i].className = cards[i].className.replace(' active-card', '');
+  var cards = document.querySelectorAll('#catalog-list .product');
+  
+  if (!cards.length) return;
+  
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].classList.remove('active-card');
   }
-
+  
   if (select.value === 'all') {
-    for (i = 0; i < cards.length; i = i + 1) {
-      cards[i].className = cards[i].className + ' active-card';
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].classList.add('active-card');
+    }
+  } else {
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].classList.contains(select.value)) {
+        cards[i].classList.add('active-card');
+      }
     }
   }
-
-  if (select.value === 'metal') {
-    activeByClass('metal');
-  }
-
-  if (select.value === 'machining') {
-    activeByClass('machining');
-  }
-
-  if (select.value === 'welding') {
-    activeByClass('welding');
-  }
 }
 
-function activeByClass(nameClass) {
-  var elements = document.querySelectorAll('.' + nameClass);
-  var i;
-
-  for (i = 0; i < elements.length; i = i + 1) {
-    elements[i].className = elements[i].className + ' active-card';
-  }
+// ========== ЗАГРУЗКА ТОВАРОВ ДЛЯ СТРАНИЦЫ ПРОДУКЦИЯ ==========
+function loadProductsFromXML() {
+  var xmlUrl = 'data/company.xml';
+  
+  fetch(xmlUrl)
+    .then(function(response) {
+      if (!response.ok) {
+        throw new Error('Ошибка загрузки: ' + response.status);
+      }
+      return response.text();
+    })
+    .then(function(xmlString) {
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+      
+      var items = xmlDoc.getElementsByTagName('item');
+      
+      var container = document.getElementById('catalog-list');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      for (var i = 0; i < items.length; i++) {
+        var category = items[i].getAttribute('category');
+        var name = items[i].getElementsByTagName('name')[0].textContent;
+        var description = items[i].getElementsByTagName('description')[0].textContent;
+        var price = items[i].getElementsByTagName('price')[0].textContent;
+        var icon = items[i].getElementsByTagName('icon')[0].textContent;
+        
+        var imageTag = items[i].getElementsByTagName('image');
+        var image = '';
+        if (imageTag.length > 0 && imageTag[0].textContent) {
+          image = imageTag[0].textContent;
+        }
+        
+        var card = document.createElement('article');
+        card.className = 'card product-card product ' + category + ' active-card';
+        
+        if (image) {
+          card.style.backgroundImage = 'url(' + image + ')';
+          card.style.backgroundSize = 'cover';
+          card.style.backgroundPosition = 'center';
+          card.style.minHeight = '320px';
+          card.style.position = 'relative';
+        }
+        
+        card.innerHTML = `
+          ${image ? '<div class="card-overlay"></div>' : ''}
+          <div class="product-icon" ${image ? 'style="position:relative; z-index:2;"' : ''}>${icon}</div>
+          <h3 ${image ? 'style="position:relative; z-index:2; color:white;"' : ''}>${name}</h3>
+          <p ${image ? 'style="position:relative; z-index:2; color:rgba(255,255,255,0.9);"' : ''}>${description}</p>
+          <strong ${image ? 'style="position:relative; z-index:2; color:#d98b2b;"' : ''}>${price}</strong>
+        `;
+        
+        container.appendChild(card);
+      }
+      
+      initProducts();
+    })
+    .catch(function(error) {
+      console.error('Ошибка:', error);
+      var container = document.getElementById('catalog-list');
+      if (container) {
+        container.innerHTML = '<p style="color: red; text-align: center;">Ошибка загрузки данных</p>';
+      }
+    });
 }
 
+// ========== ЗАГРУЗКА ПОПУЛЯРНЫХ ТОВАРОВ НА ГЛАВНУЮ ==========
+function loadHomeProducts() {
+  var xmlUrl = 'data/company.xml';
+  
+  fetch(xmlUrl)
+    .then(function(response) {
+      if (!response.ok) {
+        throw new Error('Ошибка загрузки: ' + response.status);
+      }
+      return response.text();
+    })
+    .then(function(xmlString) {
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+      
+      var items = xmlDoc.getElementsByTagName('item');
+      
+      var container = document.getElementById('home-products');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      var count = Math.min(3, items.length);
+      
+      for (var i = 0; i < count; i++) {
+        var category = items[i].getAttribute('category');
+        var name = items[i].getElementsByTagName('name')[0].textContent;
+        var description = items[i].getElementsByTagName('description')[0].textContent;
+        var price = items[i].getElementsByTagName('price')[0].textContent;
+        var icon = items[i].getElementsByTagName('icon')[0].textContent;
+        
+        var imageTag = items[i].getElementsByTagName('image');
+        var image = '';
+        if (imageTag.length > 0 && imageTag[0].textContent) {
+          image = imageTag[0].textContent;
+        }
+        
+        var card = document.createElement('article');
+        card.className = 'card product-card';
+        
+        if (image) {
+          card.style.backgroundImage = 'url(' + image + ')';
+          card.style.backgroundSize = 'cover';
+          card.style.backgroundPosition = 'center';
+          card.style.minHeight = '280px';
+          card.style.position = 'relative';
+        }
+        
+        card.innerHTML = `
+          ${image ? '<div class="card-overlay"></div>' : ''}
+          <div class="product-icon" ${image ? 'style="position:relative; z-index:2;"' : ''}>${icon}</div>
+          <h3 ${image ? 'style="position:relative; z-index:2; color:white;"' : ''}>${name}</h3>
+          <p ${image ? 'style="position:relative; z-index:2; color:rgba(255,255,255,0.9);"' : ''}>${description}</p>
+          <strong ${image ? 'style="position:relative; z-index:2; color:#d98b2b;"' : ''}>${price}</strong>
+        `;
+        
+        container.appendChild(card);
+      }
+    })
+    .catch(function(error) {
+      console.error('Ошибка загрузки товаров на главную:', error);
+      var container = document.getElementById('home-products');
+      if (container) {
+        container.innerHTML = '<p style="color: red; text-align: center;">Не удалось загрузить товары</p>';
+      }
+    });
+}
+
+// ========== ФОРМА ==========
 function initForm() {
   var form = document.getElementById('contactForm');
-
   if (form) {
     form.addEventListener('submit', sendMessage);
   }
@@ -75,7 +194,20 @@ function initForm() {
 function sendMessage(event) {
   var name = document.getElementById('name');
   var result = document.getElementById('resultMessage');
-
   event.preventDefault();
   result.innerHTML = 'Спасибо, ' + name.value + '. Ваша заявка принята.';
 }
+
+// ========== ЗАПУСК ==========
+window.onload = function () {
+  initMenu();
+  initForm();
+  
+  if (document.getElementById('catalog-list')) {
+    loadProductsFromXML();
+  }
+  
+  if (document.getElementById('home-products')) {
+    loadHomeProducts();
+  }
+};
