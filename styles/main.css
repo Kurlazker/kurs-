@@ -1,4 +1,4 @@
-/* ========== БАЗОВЫЕ СТИЛИ ========== */
+/*  БАЗОВЫЕ СТИЛИ */
 * {
   box-sizing: border-box;
 }
@@ -25,7 +25,7 @@ a {
   margin: 0 auto;
 }
 
-/* ========== ЛОГОТИП ========== */
+/* ЛОГОТИП */
 .logo {
   display: inline-flex;
   align-items: center;
@@ -44,7 +44,7 @@ a {
   color: #ffffff;
 }
 
-/* ========== НАВИГАЦИЯ ========== */
+/*  НАВИГАЦИЯ */
 .site-nav {
   display: flex;
   gap: 24px;
@@ -64,7 +64,7 @@ a {
   display: none;
 }
 
-/* ========== ЗАГОЛОВКИ ========== */
+/* ЗАГОЛОВКИ */
 .hero h1,
 .page-hero h1 {
   font-size: clamp(2rem, 4vw, 3.4rem);
@@ -86,7 +86,7 @@ a {
   font-size: 0.82rem;
 }
 
-/* ========== КНОПКИ ========== */
+/* КНОПКИ */
 .hero-actions,
 .check-list,
 .contact-form {
@@ -126,7 +126,7 @@ a {
   background: #162c42;
 }
 
-/* ========== SVG ИЛЛЮСТРАЦИЯ ========== */
+/* SVG ИЛЛЮСТРАЦИЯ */
 .hero-visual {
   position: relative;
 }
@@ -151,7 +151,7 @@ a {
   fill: none;
 }
 
-/* ========== КАРТОЧКИ ========== */
+/* КАРТОЧКИ */
 .badge-card,
 .card {
   background: #ffffff;
@@ -193,7 +193,7 @@ a {
   border-radius: 24px;
 }
 
-/* ========== КАРТОЧКИ ПРОДУКТОВ ========== */
+/* КАРТОЧКИ ПРОДУКТОВ */
 .product-card {
   display: flex;
   flex-direction: column;
@@ -217,7 +217,7 @@ a {
   font-size: 1.3rem;
 }
 
-/* ========== ФОРМА ========== */
+/* ФОРМА */
 .contact-form label {
   display: block;
   margin-bottom: 14px;
@@ -258,7 +258,7 @@ a {
   display: flex;
 }
 
-/* ========== ФУТЕР ========== */
+/* ФУТЕР */
 .footer-copy p,
 .footer-contacts span,
 .footer-contacts a,
@@ -285,7 +285,7 @@ a {
   border: 1px solid #d6dbe0;
 }
 
-/* ========== ШАПКА ========== */
+/* ШАПКА */
 .site-header {
   position: sticky;
   top: 0;
@@ -352,7 +352,7 @@ a {
   align-items: flex-start;
 }
 
-/* ========== СТИЛИ ДЛЯ КАРТОЧЕК С ФОТО ========== */
+/* СТИЛИ ДЛЯ КАРТОЧЕК С ФОТО */
 .card-overlay {
   position: absolute;
   top: 0;
@@ -364,7 +364,7 @@ a {
   border-radius: 18px;
 }
 
-/* ========== ФИЛЬТР ========== */
+/* ФИЛЬТР */
 .catalog-toolbar {
   display: flex;
   align-items: flex-end;
@@ -413,7 +413,7 @@ a {
   background-color: #bf7015;
 }
 
-/* ========== ПЛАНШЕТЫ И ТЕЛЕФОНЫ (до 900px) ========== */
+/* ПЛАНШЕТЫ И ТЕЛЕФОНЫ (до 900px) */
 @media (max-width: 900px) {
   /* ШАПКА */
   .site-header {
@@ -551,7 +551,7 @@ a {
   }
 }
 
-/* ========== ТЕЛЕФОНЫ (до 600px) — дополнительные уточнения ========== */
+/* ТЕЛЕФОНЫ (до 600px) */
 @media (max-width: 600px) {
   .logo-mark {
     width: 52px !important;
