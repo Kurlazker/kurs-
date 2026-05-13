@@ -413,129 +413,15 @@ a {
   background-color: #bf7015;
 }
 
-/* ========== АДАПТИВ ========== */
+/* ========== ПЛАНШЕТЫ И ТЕЛЕФОНЫ (до 900px) ========== */
 @media (max-width: 900px) {
-  .hero-grid,
-  .feature-grid,
-  .two-col,
-  .cards-3,
-  .cards-4 {
-    grid-template-columns: 1fr;
-  }
-
-  .site-nav {
-    display: none;
-    position: absolute;
-    top: 78px;
-    left: 16px;
-    right: 16px;
-    flex-direction: column;
-    background: #ffffff;
-    border: 1px solid #d6dbe0;
-    border-radius: 16px;
-    padding: 10px 18px;
-  }
-
-  .site-nav a {
-    padding: 12px 0;
-  }
-
-  .site-nav.is-open {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: inline-block;
-    border: 1px solid #d6dbe0;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 8px 12px;
-  }
-
-  .header-row,
-  .footer-row,
-  .section-heading-row,
-  .cta-box,
-  .catalog-toolbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero,
-  .page-hero {
-    padding: 56px 0;
-  }
-
-  .hero-actions,
-  .footer-socials {
-    width: 100%;
-  }
-
-  .hero-actions .btn,
-  .catalog-toolbar .btn,
-  .catalog-toolbar select,
-  .footer-socials a {
-    width: 100%;
-  }
-
-  .badge-card {
-    position: static;
-    margin-top: 18px;
-    max-width: none;
-  }
-
-  .container {
-    width: min(1120px, calc(100% - 24px));
-  }
-}
-
-@media (max-width: 600px) {
-  .hero h1,
-  .page-hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero,
-  .page-hero {
-    padding: 44px 0;
-  }
-
-  .card,
-  .cta-box {
-    padding: 20px;
-  }
-
-  .hero-svg {
-    border-radius: 18px;
-  }
-
-  .logo-text {
-    font-size: 0.95rem;
-  }
-
-  .catalog-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .catalog-toolbar select,
-  .catalog-toolbar .btn {
-    width: 100%;
-    min-width: auto;
-  }
-
-  .catalog-toolbar label {
-    margin-bottom: 5px;
-  }
-}
-@media (max-width: 600px) {
-  // ШАПКА 
+  /* ШАПКА */
   .site-header {
-    padding: 12px 0 !important;
+    padding: 10px 0 !important;
+  }
 
-    .container {
-      padding: 0 20px !important;
-    }
+  .site-header .container {
+    padding: 0 20px !important;
   }
 
   .header-row {
@@ -543,41 +429,41 @@ a {
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    gap: 20px !important;
-    min-height: 70px !important;
+    gap: 15px !important;
+    min-height: 65px !important;
   }
 
-  // ЛОГОТИП — слева
+  /* ЛОГОТИП — слева */
   .logo {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 10px !important;
     flex: 0 1 auto !important;
     max-width: 70% !important;
   }
 
   .logo-mark {
-    width: 52px !important;
-    height: 52px !important;
-    font-size: 28px !important;
-    line-height: 52px !important;
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 26px !important;
+    line-height: 46px !important;
   }
 
   .logo-text {
-    font-size: 1.4rem !important;
+    font-size: 1.3rem !important;
     font-weight: 700 !important;
     white-space: normal !important;
     word-break: break-word !important;
   }
 
-  // БУРГЕР — строго справа, на одном уровне
+  /* БУРГЕР — справа, на одном уровне */
   .menu-toggle {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 52px !important;
-    height: 52px !important;
-    font-size: 32px !important;
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 28px !important;
     background: none !important;
     border: 1px solid #d6dbe0 !important;
     border-radius: 12px !important;
@@ -587,39 +473,40 @@ a {
     order: 2 !important;
   }
 
-  // выпадающее меню
+  /* ВЫПАДАЮЩЕЕ МЕНЮ */
   .site-nav {
     display: none !important;
     position: absolute !important;
-    top: 85px !important;
+    top: 80px !important;
     left: 20px !important;
     right: 20px !important;
     flex-direction: column !important;
     background: #ffffff !important;
     border: 1px solid #d6dbe0 !important;
     border-radius: 20px !important;
-    padding: 20px 18px !important;
-    gap: 15px !important;
+    padding: 18px 18px !important;
+    gap: 12px !important;
     z-index: 100 !important;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
-
-    &.is-open {
-      display: flex !important;
-    }
-
-    a {
-      padding: 12px 0 !important;
-      font-size: 18px !important;
-      font-weight: 500 !important;
-      text-align: center !important;
-      border-bottom: 1px solid #eee !important;
-
-      &:last-child {
-        border-bottom: none !important;
-      }
-    }
   }
 
+  .site-nav.is-open {
+    display: flex !important;
+  }
+
+  .site-nav a {
+    padding: 12px 0 !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    border-bottom: 1px solid #eee !important;
+  }
+
+  .site-nav a:last-child {
+    border-bottom: none !important;
+  }
+
+  /* СЕТКИ — одна колонка */
   .hero-grid,
   .feature-grid,
   .two-col,
@@ -650,16 +537,40 @@ a {
     flex-direction: column !important;
     align-items: stretch !important;
     gap: 12px !important;
+  }
 
-    select,
-    .btn {
-      width: 100% !important;
-      min-width: auto !important;
-    }
+  .catalog-toolbar select,
+  .catalog-toolbar .btn {
+    width: 100% !important;
+    min-width: auto !important;
   }
 
   .card,
   .cta-box {
     padding: 20px !important;
+  }
+}
+
+/* ========== ТЕЛЕФОНЫ (до 600px) — дополнительные уточнения ========== */
+@media (max-width: 600px) {
+  .logo-mark {
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 28px !important;
+    line-height: 52px !important;
+  }
+
+  .logo-text {
+    font-size: 1.4rem !important;
+  }
+
+  .menu-toggle {
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 32px !important;
+  }
+
+  .site-nav {
+    top: 85px !important;
   }
 }
